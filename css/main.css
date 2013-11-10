@@ -1,1 +1,41 @@
-@CHARSET "ISO-8859-1";
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+#palette {
+	float: left;
+	width: 300px;
+	height: 100%;
+	background-color: black;
+	overflow: auto;
+}
+
+	#palette .letter {
+		font-family: 'Chango', cursive;
+		display: inline-block;
+		font-size: 4em;
+		text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+	}
+
+#canvas {
+	margin-left: 300px;
+	height: 100%;
+	z-index: 0;
+	
+	background: url(../img/refrigerator.jpg) no-repeat center center fixed;
+	background-position: left 200px center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+}
+
+	#canvas .newLetter {
+	font-family: 'Chango', cursive;
+	font-size: 4em;
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+	}
