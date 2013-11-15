@@ -1,3 +1,7 @@
+/****************************************************************************************
+* GENERAL
+*****************************************************************************************/
+
 html, body {
 	height: 100%;
 	margin: 0;
@@ -6,12 +10,18 @@ html, body {
 
 
 
+
+/****************************************************************************************
+* PALETTE
+*****************************************************************************************/
+
 #palette {
 	float: left;
-	width: 300px;
+	width: 320px;
 	height: 100%;
-	background-color: black;
-	overflow: auto;
+	background-color: #888;
+	padding: 0 5px;
+	background: url(../img/texture.png) repeat;
 }
 
 	#palette .letter {
@@ -19,14 +29,23 @@ html, body {
 		display: inline-block;
 		font-size: 4em;
 		text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+		cursor: move;
 	}
 
+#container {
+	height: 99.5%; /* Prevents accordion from exceeding #palette boundaries */
+}
+	
+/****************************************************************************************
+* CANVAS
+*****************************************************************************************/
+
 #canvas {
-	margin-left: 300px;
+	margin-left: 320px;
 	height: 100%;
 	z-index: 0;
 	
-	background: url(../img/refrigerator.jpg) no-repeat center center fixed;
+	background: url(../img/fridge.jpg) no-repeat center center fixed;
 	background-position: left 200px center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -35,7 +54,39 @@ html, body {
 }
 
 	#canvas .newLetter {
-	font-family: 'Chango', cursive;
-	font-size: 4em;
-	text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+		font-family: 'Chango', cursive;
+		display: inline-block;
+		font-size: 4.4em;
+		text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+		cursor: move;
 	}
+
+#trash {
+	position:fixed;
+    right:0;
+    bottom:10px;
+    z-index: 100;
+}
+
+#trash a{
+	display: block;
+	background: url(../img/trashcan.png) no-repeat;
+	height: 110px;
+    width: 125px;
+}
+
+#trash a:hover{
+	background-position: 0px -113px;
+}
+
+#trash img {
+	border: none;
+}
+
+/****************************************************************************************
+* JQUERY UI CSS OVERRIDE
+*****************************************************************************************/
+
+#accordion .ui-accordion-content {
+    padding: 0 .5em;
+}

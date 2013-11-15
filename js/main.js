@@ -1,24 +1,50 @@
-var upperAlphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-var lowerAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+// Initialize alphabet, numbers, and characters
+var upperAlphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var lowerAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var punctuation = ['\.', '\,', '\;', '\:', '\-', '\?', '\!', '\"', '\'', '\.\.\.', '\(', '\)', '\@', '\#', '\$', '\%', '\&', '\*', '\+', '\='];
 var numOfColors = 50;
 
-
+// Add upper case letters to page
 for (i in upperAlphabet){
-	$('#palette').append('<div class="letter" id="letter'+upperAlphabet[i]+'">'+upperAlphabet[i]+'</div>');
+	$('#upperCase').append('<div class="letter" id="'+upperAlphabet[i]+'">'+upperAlphabet[i]+'</div>');
 	
 	// Set random color for each letter
 	var randomValue = Math.floor(Math.random() * numOfColors) + 1;
-	$('#letter' + upperAlphabet[i]).css('color', rainbow(numOfColors, randomValue));
+	$('#' + upperAlphabet[i]).css('color', rainbow(numOfColors, randomValue));
 }
 
+//Add lower case letters to page
 for (i in lowerAlphabet){
-	$('#palette').append('<div class="letter" id="letter'+lowerAlphabet[i]+'">'+lowerAlphabet[i]+'</div>');
+	$('#lowerCase').append('<div class="letter" id="'+lowerAlphabet[i]+'">'+lowerAlphabet[i]+'</div>');
 	
 	// Set random color for each letter
 	var randomValue = Math.floor(Math.random() * numOfColors) + 1;
-	$('#letter' + lowerAlphabet[i]).css('color', rainbow(numOfColors, randomValue));
+	$('#' + lowerAlphabet[i]).css('color', rainbow(numOfColors, randomValue));
 }
 
+//Add numbers to page
+for (i in numbers){
+	$('#numbers').append('<div class="letter" id="'+numbers[i]+'">'+numbers[i]+'</div>');
+	
+	// Set random color for each letter
+	var randomValue = Math.floor(Math.random() * numOfColors) + 1;
+	$('#' + numbers[i]).css('color', rainbow(numOfColors, randomValue));
+}
+
+//Add punctuation to page
+for (i in punctuation){
+	
+	$('#punctuation').append('<div class="letter" id="punct'+ upperAlphabet[i] +'">'+punctuation[i]+'</div>');
+	
+	
+	// Set random color for each letter
+	var randomValue = Math.floor(Math.random() * numOfColors) + 1;
+	$('#punct' + upperAlphabet[i]).css('color', rainbow(numOfColors, randomValue));
+	
+}
+
+// Assigns random color to each letter
 function rainbow(numOfSteps, step) {
     // This function generates vibrant, "evenly spaced" colours (i.e. no clustering). This is ideal for creating easily distinguishable vibrant markers in Google Maps and other apps.
     // Adam Cole, 2011-Sept-14
@@ -41,19 +67,40 @@ function rainbow(numOfSteps, step) {
 }
 
 
+// Allows letters to be dragged
 $(".letter").draggable({
-    helper: 'clone',
+	helper: 'clone',
+	opacity: .25,
+	revert: "invalid",
     containment: 'html'
 });
 
+
+// Allows letter clone to be dropped into canvas
 $("#canvas").droppable({
     accept: '.letter',
     drop: function(event, ui) {
-        $(this).append($(ui.helper).clone());
+    	$(".letter").css({'opacity':'1'});
+    	$(this).append($(ui.helper).clone());
         $("#canvas .letter").addClass("newLetter");
         $(".newLetter").removeClass("ui-draggable letter");
         $(".newLetter").draggable({
-            containment: 'parent'
+        	containment: 'parent',
+        	opacity: .25
         });
     }
 });
+
+// Delete Letters
+$("#trash").droppable({
+	accept: '.newLetter',
+	drop: function(event, ui) {
+		$(ui.draggable).remove();
+	}
+});
+
+//Creates accordion affect on left hand side
+$(function() {
+    $( "#accordion" ).accordion({ heightStyle: "fill" });
+});
+

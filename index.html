@@ -3,15 +3,32 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Letters and Words</title>
+		<title>Magnets</title>
 		
 		<link href='http://fonts.googleapis.com/css?family=Chango' rel='stylesheet' type='text/css'>
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/start/jquery-ui.min.css" rel="stylesheet"  />
 		<link href="css/main.css" rel='stylesheet' type='text/css'>
 
 	</head>
 	<body>
-		<div id="palette"></div>
-		<div id="canvas"></div>
+		<div id="palette">
+			<div id="container">
+				<div id="accordion">
+				  <h3>Upper Case</h3>
+				  <div id="upperCase"></div>
+				  <h3>Lower Case</h3>
+				  <div id="lowerCase"></div>
+				  <h3>Numbers</h3>
+				  <div id="numbers"></div>
+				  <h3>Punctuation</h3>
+				  <div id="punctuation"></div>
+				</div>
+			</div>
+		</div>
+		<div id="canvas">
+			<div id="trash"><a href="#"></a></div>
+		</div>
+		
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
