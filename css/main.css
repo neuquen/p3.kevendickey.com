@@ -45,8 +45,11 @@ html, body {
 	height: 100%;
 	z-index: 0;
 	
-	background: url(../img/fridge.jpg) no-repeat center center fixed;
+	background: url(../img/fridge.jpg);
 	background-position: left 200px center;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
