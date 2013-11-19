@@ -27,22 +27,30 @@ for (i in lowerAlphabet){
 for (i in numbers){
 	$('#numbers').append('<div class="letter" id="'+numbers[i]+'">'+numbers[i]+'</div>');
 	
-	// Set random color for each letter
+	// Set random color for each number
 	var randomValue = Math.floor(Math.random() * numOfColors) + 1;
 	$('#' + numbers[i]).css('color', rainbow(numOfColors, randomValue));
 }
 
 //Add punctuation to page
 for (i in punctuation){
-	
 	$('#punctuation').append('<div class="letter" id="punct'+ upperAlphabet[i] +'">'+punctuation[i]+'</div>');
 	
+	// Set random color for each character
+	var randomValue = Math.floor(Math.random() * numOfColors) + 1;
+	$('#punct' + upperAlphabet[i]).css('color', rainbow(numOfColors, randomValue));
+}
+
+/* FOR EACH LOOP IN JQUERY (COMPARE WITH NUMBERS)
+$.each(numbers, function(key, value) {
+	$('#numbers').append('<div class="letter" id="'+value+'">'+value+'</div>');
 	
 	// Set random color for each letter
 	var randomValue = Math.floor(Math.random() * numOfColors) + 1;
-	$('#punct' + upperAlphabet[i]).css('color', rainbow(numOfColors, randomValue));
+	$('#' + value).css('color', rainbow(numOfColors, randomValue));
 	
-}
+});
+*/
 
 // Assigns random color to each letter
 function rainbow(numOfSteps, step) {
@@ -76,14 +84,14 @@ $(".letter").draggable({
 });
 
 
-// Allows letter clone to be dropped into canvas
+// Allows letter clone to be dropped into canvas and draggable on canvas
 $("#canvas").droppable({
     accept: '.letter',
     drop: function(event, ui) {
-    	$(".letter").css({'opacity':'1'});
     	$(this).append($(ui.helper).clone());
         $("#canvas .letter").addClass("newLetter");
         $(".newLetter").removeClass("ui-draggable letter");
+        $(".newLetter").css({'opacity':'1'});
         $(".newLetter").draggable({
         	containment: 'parent',
         	opacity: .25
@@ -91,12 +99,17 @@ $("#canvas").droppable({
     }
 });
 
-// Delete Letters
+// Delete Individual Letters
 $("#trash").droppable({
 	accept: '.newLetter',
 	drop: function(event, ui) {
 		$(ui.draggable).remove();
 	}
+});
+
+// Delete All Letters by clicking on trashcan
+$("#trash").click(function(){
+	$(".newLetter").remove();
 });
 
 //Creates accordion affect on left hand side
