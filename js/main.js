@@ -41,17 +41,6 @@ for (i in punctuation){
 	$('#punct' + upperAlphabet[i]).css('color', rainbow(numOfColors, randomValue));
 }
 
-/* FOR EACH LOOP IN JQUERY (COMPARE WITH NUMBERS)
-$.each(numbers, function(key, value) {
-	$('#numbers').append('<div class="letter" id="'+value+'">'+value+'</div>');
-	
-	// Set random color for each letter
-	var randomValue = Math.floor(Math.random() * numOfColors) + 1;
-	$('#' + value).css('color', rainbow(numOfColors, randomValue));
-	
-});
-*/
-
 // Assigns random color to each letter
 function rainbow(numOfSteps, step) {
     // This function generates vibrant, "evenly spaced" colours (i.e. no clustering). This is ideal for creating easily distinguishable vibrant markers in Google Maps and other apps.
