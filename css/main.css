@@ -8,9 +8,6 @@ html, body {
 	padding: 0;
 }
 
-
-
-
 /****************************************************************************************
 * PALETTE
 *****************************************************************************************/
@@ -34,6 +31,19 @@ html, body {
 
 #container {
 	height: 99.5%; /* Prevents accordion from exceeding #palette boundaries */
+}
+
+button {
+	width: 100%;
+	margin: 5px 0;
+}
+
+#dialog img {
+	padding-bottom: 10px;
+}
+
+#dialog h1, #dialog p {
+	text-align: center;
 }
 	
 /****************************************************************************************

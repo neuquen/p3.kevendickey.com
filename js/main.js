@@ -106,3 +106,27 @@ $(function() {
     $( "#accordion" ).accordion({ heightStyle: "fill" });
 });
 
+//Apply JQuery UI theme to button
+$("button, input:submit, input:button").button();
+
+//Open dialog on click of button
+$( "button" ).click(function() {
+    $( "#dialog" ).dialog( "open" );
+});
+
+//Dialog functionality
+$(function() {
+	$( "#dialog" ).dialog({
+		autoOpen: false,
+		width: 800,
+		height: 600,
+		show: {
+			effect: "fade",
+			duration: 1000
+		},
+		hide: {
+			effect: "fade",
+			duration: 500
+		}
+	});
+});
